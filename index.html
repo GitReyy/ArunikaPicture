@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARUNIKA PICTURE — Fotografer Wisuda & Cinematic Graduation Photography</title>
+    <meta name="description" content="Arunika Picture adalah jasa fotografer wisuda profesional, cinematic, dan estetik. Abadikan momen kelulusan bersejarahmu bersama sahabat & keluarga tercinta.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cinzel (Trajan Pro Alternative) & Plus Jakarta Sans & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        /* Palette Requirement: Galaxy Midnight Blue, Clean White Canvas, & Neon Cyan Accent */
+                        galaxyDark: '#0B1B3D',      /* #0B1B3D Teks & Struktur Utama (Galaxy Midnight Blue) */
+                        galaxyDeep: '#0D1B2A',      /* #0D1B2A Deep Galaxy Blue */
+                        neonCyan: '#00F0FF',        /* #00F0FF Aksen Glowing / Hover */
+                        electricBlue: '#3A86FF',    /* #3A86FF Electric Blue */
+                        surfaceWhite: '#FFFFFF',    /* #FFFFFF Background Utama Bersih */
+                        surfaceOffWhite: '#F8F9FC', /* #F8F9FC Whitespace Luas & Bernapas */
+                        galaxyMuted: '#506690',     /* Galaxy Slate for Subtitles */
+                    },
+                    fontFamily: {
+                        trajan: ['"Trajan Pro"', '"Cinzel"', 'serif'], /* Trajan-Pro Primary Display Font */
+                        display: ['"Trajan Pro"', '"Cinzel"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    boxShadow: {
+                        'cyan-glow': '0 0 25px rgba(0, 240, 255, 0.4)',
+                        'cyan-soft': '0 4px 20px rgba(0, 240, 255, 0.18)',
+                        'galaxy-card': '0 12px 36px -8px rgba(11, 27, 61, 0.08)',
+                        'galaxy-hover': '0 20px 45px -10px rgba(11, 27, 61, 0.16)',
+                        'glass-modal': '0 25px 50px -12px rgba(11, 27, 61, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Base Canvas & Typography */
+        body {
+            background-color: #FFFFFF;
+            color: #0B1B3D;
+            overflow-x: hidden;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            /* Precise Viewfinder Cursor Accent */
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%230B1B3D" stroke-width="1.5"><circle cx="12" cy="12" r="3" fill="%2300F0FF"/><path d="M5 5h-2v2M19 5h2v2M5 19h-2v-2M19 19h2v-2"/></svg>') 12 12, auto;
+        }
+
+        a, button, input, select, textarea, .cursor-pointer {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2300F0FF" stroke-width="2"><circle cx="12" cy="12" r="4" fill="%230B1B3D"/><path d="M5 5h-2v2M19 5h2v2M5 19h-2v-2M19 19h2v-2"/></svg>') 12 12, pointer !important;
+        }
+
+        /* Ambient Fine Grid Background Pattern */
+        .bg-grid-canvas {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(11, 27, 61, 0.035) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(11, 27, 61, 0.035) 1px, transparent 1px);
+        }
+
+        /* Glassmorphism Overlays per user specs: rgba(255, 255, 255, 0.65) */
+        .white-glass {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(11, 27, 61, 0.12);
+        }
+
+        .white-glass-card {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(11, 27, 61, 0.10);
+        }
+
+        .galaxy-glass {
+            background: rgba(11, 27, 61, 0.94);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        /* HUD Viewfinder Reticle Corners */
+        .hud-border {
+            position: relative;
+        }
+        .hud-border::before, .hud-border::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-color: #00F0FF;
+            border-style: solid;
+            transition: all 0.3s ease;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .hud-border::before {
+            top: -1px;
+            left: -1px;
+            border-width: 2px 0 0 2px;
+        }
+        .hud-border::after {
+            bottom: -1px;
+            right: -1px;
+            border-width: 0 2px 2px 0;
+        }
+
+        /* Glowing Text Utilities */
+        .cyan-glow-text {
+            text-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+        }
+
+        /* Floating Slow Animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float-slow {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+        .animate-float-delayed {
+            animation: floatSlow 4.5s ease-in-out infinite 2s;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F8F9FC;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0B1B3D;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF;
+        }
+    </style>
+</head>
+<body class="bg-surfaceWhite text-galaxyDark bg-grid-canvas min-h-screen flex flex-col selection:bg-neonCyan selection:text-galaxyDark">
+
+    <!-- Top Announcement Bar (Galaxy Midnight Blue with Neon Cyan Glow) -->
+    <div class="bg-galaxyDark text-white text-xs py-2.5 px-4 border-b border-neonCyan/30 relative z-50">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2.5 justify-center sm:justify-start">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-sm text-[10px] font-mono font-bold bg-neonCyan/20 text-neonCyan border border-neonCyan/50 uppercase tracking-widest">
+                    <span class="w-1.5 h-1.5 rounded-full bg-neonCyan animate-ping"></span>
+                    PROMO_WISUDA_2026
+                </span>
+                <span class="text-white/90 font-medium">
+                    Booking H-14 Dapatkan <strong>Free Cetak 12R + Frame Minimalis</strong> & Akses All Softfile Google Drive!
+                </span>
+            </div>
+            <div class="flex items-center gap-4 text-[11px] text-white/80 font-mono">
+                <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20ingin%20tanya%20jadwal%20foto%20wisuda" target="_blank" class="hover:text-neonCyan transition-colors flex items-center gap-1.5">
+                    <i class="fa-brands fa-whatsapp text-neonCyan text-sm"></i> 
+                    <span>WA: +62 812-3456-7890</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Header (White Glassmorphism with Galaxy Blue Structure) -->
+    <header class="sticky top-0 left-0 w-full z-40 white-glass border-b border-galaxyDark/10 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            
+            <!-- Brand Logo with IMG_2074.PNG -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <div class="h-11 px-3 py-1.5 bg-galaxyDark rounded-md border border-galaxyDark group-hover:border-neonCyan transition-all duration-300 shadow-md flex items-center justify-center relative overflow-hidden">
+                    <img src="IMG_2074.PNG" alt="Arunika Picture" class="h-6 object-contain filter brightness-110">
+                    <div class="absolute top-0 left-0 w-full h-[2px] bg-neonCyan opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+                <div>
+                    <span class="font-trajan font-bold tracking-[0.18em] text-lg block text-galaxyDark leading-tight group-hover:text-electricBlue transition-colors">
+                        ARUNIKA PICTURE
+                    </span>
+                    <span class="font-mono text-[9px] text-galaxyMuted uppercase tracking-widest font-semibold block">
+                        Graduation Visual System
+                    </span>
+                </div>
+            </a>
+            
+            <!-- Desktop Navigation Links (Trajan / Monospace Aesthetic) -->
+            <nav class="hidden lg:flex items-center gap-8 font-trajan text-xs font-bold tracking-[0.12em] text-galaxyDark/90">
+                <a href="#hero" class="hover:text-neonCyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] transition-all py-1 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-neonCyan hover:after:w-full after:transition-all">BERANDA</a>
+                <a href="#keunggulan" class="hover:text-neonCyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] transition-all py-1 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-neonCyan hover:after:w-full after:transition-all">KEUNGGULAN</a>
+                <a href="#portofolio" class="hover:text-neonCyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] transition-all py-1 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-neonCyan hover:after:w-full after:transition-all">PORTOFOLIO</a>
+                <a href="#paket" class="hover:text-neonCyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] transition-all py-1 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-neonCyan hover:after:w-full after:transition-all">PAKET & HARGA</a>
+                <a href="#kalkulator" class="hover:text-neonCyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] transition-all py-1 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-neonCyan hover:after:w-full after:transition-all">KALKULATOR</a>
+                <a href="#testimoni" class="hover:text-neonCyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] transition-all py-1 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-neonCyan hover:after:w-full after:transition-all">TESTIMONI</a>
+                <a href="#faq" class="hover:text-neonCyan hover:drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] transition-all py-1 relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-[2px] after:bg-neonCyan hover:after:w-full after:transition-all">FAQ</a>
+            </nav>
+
+            <!-- Action CTA Button -->
+            <div class="flex items-center gap-3">
+                <a href="#booking" class="hidden sm:inline-flex items-center gap-2.5 px-6 py-2.5 bg-galaxyDark text-surfaceWhite font-trajan font-bold text-xs tracking-wider border border-neonCyan/40 hover:bg-neonCyan hover:text-galaxyDark hover:shadow-cyan-glow transition-all duration-300 rounded-sm">
+                    <i class="fa-solid fa-camera text-neonCyan text-xs"></i>
+                    <span>RESERVASI JADWAL</span>
+                </a>
+                
+                <button id="mobile-menu-btn" class="lg:hidden text-galaxyDark text-xl p-2 focus:outline-none hover:text-neonCyan transition-colors" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden white-glass border-t border-galaxyDark/10 px-6 py-5 flex flex-col gap-3.5 font-trajan text-xs font-bold tracking-widest">
+            <a href="#hero" class="mobile-nav-link text-galaxyDark hover:text-neonCyan py-2 border-b border-galaxyDark/5">01. BERANDA</a>
+            <a href="#keunggulan" class="mobile-nav-link text-galaxyDark hover:text-neonCyan py-2 border-b border-galaxyDark/5">02. KEUNGGULAN ARUNIKA</a>
+            <a href="#portofolio" class="mobile-nav-link text-galaxyDark hover:text-neonCyan py-2 border-b border-galaxyDark/5">03. PORTOFOLIO FOTO</a>
+            <a href="#paket" class="mobile-nav-link text-galaxyDark hover:text-neonCyan py-2 border-b border-galaxyDark/5">04. PAKET & PRICELIST</a>
+            <a href="#kalkulator" class="mobile-nav-link text-galaxyDark hover:text-neonCyan py-2 border-b border-galaxyDark/5">05. KALKULATOR ADD-ON</a>
+            <a href="#testimoni" class="mobile-nav-link text-galaxyDark hover:text-neonCyan py-2 border-b border-galaxyDark/5">06. TESTIMONI WISUDAWAN</a>
+            <a href="#faq" class="mobile-nav-link text-galaxyDark hover:text-neonCyan py-2 border-b border-galaxyDark/5">07. TANYA JAWAB (FAQ)</a>
+            <a href="#booking" class="mobile-nav-link inline-flex items-center justify-center gap-2 py-3 bg-galaxyDark text-neonCyan border border-neonCyan font-bold mt-2 shadow-sm">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>RESERVASI TANGGAL WISUDA</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-28 px-6 max-w-7xl mx-auto w-full flex-grow flex flex-col justify-center">
+        
+        <!-- Subtle Ambient Cyan & Galaxy Light Effects -->
+        <div class="absolute top-12 right-10 w-96 h-96 bg-neonCyan/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+        <div class="absolute bottom-10 left-10 w-80 h-80 bg-electricBlue/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+        <!-- Floating HUD Viewfinder Metadata on Top Right -->
+        <div class="absolute top-8 right-6 hidden xl:block font-mono text-[10px] text-galaxyMuted text-right space-y-1 border-r-2 border-neonCyan pr-3 pointer-events-none">
+            <div>ARUNIKA_OPTICS // 85MM F/1.4</div>
+            <div>SENSOR // FULL_FRAME_8K_CMOS</div>
+            <div>STATUS // <span class="text-galaxyDark font-bold">SLOT_OPEN_2026</span></div>
+            <div class="text-neonCyan font-bold animate-pulse">[READY_TO_CAPTURE]</div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
+            
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 space-y-7 text-center lg:text-left">
+                
+                <!-- System Badge -->
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-surfaceOffWhite border border-galaxyDark/15 rounded-sm text-xs font-mono text-galaxyDark shadow-sm mx-auto lg:mx-0">
+                    <span class="w-2 h-2 rounded-full bg-neonCyan shadow-[0_0_8px_#00F0FF]"></span>
+                    <i class="fa-solid fa-graduation-cap text-galaxyDark text-xs"></i>
+                    <span class="tracking-wider">Arunika Picture // Cinematic Graduation Visuals</span>
+                </div>
+                
+                <!-- Headline in Trajan Pro -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-trajan font-bold text-galaxyDark leading-[1.12] tracking-tight uppercase">
+                    Setiap Toga Punya Cerita, <br class="hidden sm:inline">
+                    <span class="relative inline-block mt-1">
+                        <span class="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Setiap Senyum</span>
+                        <span class="absolute -bottom-1 left-0 w-full h-3 bg-neonCyan/25 -z-0 skew-x-12"></span>
+                    </span> Punya Makna.
+                </h1>
+                
+                <!-- Subheadline -->
+                <p class="text-base sm:text-lg text-galaxyDark/75 max-w-xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                    Abadikan momen wisudamu dengan kanvas putih bersih yang menonjolkan keaslian warna toga, sentuhan cinematic tone berkelas, dan arahan pose yang mengalir alami tanpa rasa kaku.
+                </p>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2 font-trajan text-xs font-bold tracking-widest">
+                    <a href="#paket" class="w-full sm:w-auto px-8 py-4 bg-galaxyDark text-surfaceWhite border border-neonCyan shadow-lg hover:bg-neonCyan hover:text-galaxyDark transition-all duration-300 flex items-center justify-center gap-3 group rounded-sm">
+                        <span>LIHAT PAKET WISUDA</span>
+                        <i class="fa-solid fa-chevron-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20mau%20konsultasi%20foto%20wisuda" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-surfaceWhite border border-galaxyDark/20 text-galaxyDark hover:border-neonCyan hover:shadow-cyan-soft transition-all duration-300 flex items-center justify-center gap-2.5 rounded-sm">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                        <span>KONSULTASI WHATSAPP</span>
+                    </a>
+                </div>
+
+                <!-- Trust Statistics Row -->
+                <div class="pt-6 border-t border-galaxyDark/10 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-trajan font-bold text-galaxyDark">1.200+</div>
+                        <div class="text-[11px] sm:text-xs text-galaxyMuted font-mono mt-0.5">Wisudawan Terpilih</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-trajan font-bold text-galaxyDark flex items-center justify-center lg:justify-start gap-1">
+                            4.9 <i class="fa-solid fa-star text-xs text-amber-500"></i>
+                        </div>
+                        <div class="text-[11px] sm:text-xs text-galaxyMuted font-mono mt-0.5">Rating Kepuasan</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl sm:text-3xl font-trajan font-bold text-galaxyDark">100%</div>
+                        <div class="text-[11px] sm:text-xs text-galaxyMuted font-mono mt-0.5">All Files Drive Akses</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Hero Visual Showcase -->
+            <div class="lg:col-span-5 relative">
+                
+                <!-- Geometric Decor Circles -->
+                <div class="absolute -top-8 -right-8 w-44 h-44 border border-galaxyDark/10 rounded-full"></div>
+                <div class="absolute -top-4 -right-4 w-36 h-36 border border-neonCyan/30 rounded-full animate-[spin_20s_linear_infinite]"></div>
+
+                <!-- Main Featured Photo Card with HUD Viewfinder Border -->
+                <div class="hud-border white-glass p-3 shadow-2xl relative overflow-hidden group">
+                    <div class="relative h-[460px] sm:h-[500px] overflow-hidden bg-galaxyDark">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=85" alt="Arunika Picture Graduation Portrait" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        
+                        <!-- Dark Gradient Overlay for text readability -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-galaxyDark/90 via-galaxyDark/20 to-transparent"></div>
+                        
+                        <!-- Floating HUD Badge Top Right -->
+                        <div class="absolute top-4 right-4 bg-galaxyDark/90 backdrop-blur-md text-neonCyan font-mono text-[10px] font-bold px-3 py-1.5 border border-neonCyan/40 flex items-center gap-1.5 shadow-md">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neonCyan animate-pulse"></span>
+                            <span>CINEMATIC_GRADE</span>
+                        </div>
+
+                        <!-- Card Bottom Description Info -->
+                        <div class="absolute bottom-5 left-5 right-5 text-white">
+                            <div class="flex items-center gap-2 mb-1.5 font-mono text-[10px]">
+                                <span class="px-2 py-0.5 bg-neonCyan text-galaxyDark font-bold uppercase tracking-wider">Universitas Indonesia</span>
+                                <span class="text-white/70">DOKUMENTASI 2026</span>
+                            </div>
+                            <h3 class="text-xl font-trajan font-bold text-white mb-1 uppercase tracking-wide">Momen Prestasi & Awal Baru</h3>
+                            <p class="text-xs text-white/80 font-light leading-snug">"Fotografer Arunika sangat bersahabat, pose diarahkan dengan luwes dan hasilnya memukau."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Feature Stickers -->
+                <div class="absolute -bottom-6 -left-4 sm:-left-8 white-glass p-3.5 shadow-xl flex items-center gap-3 border border-galaxyDark/15 animate-float-slow max-w-[240px]">
+                    <div class="w-10 h-10 bg-galaxyDark text-neonCyan flex items-center justify-center text-lg flex-shrink-0 border border-neonCyan/30">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-trajan font-bold text-galaxyDark uppercase">Pose Coaching</div>
+                        <div class="text-[10px] text-galaxyMuted">Bebas canggung, dipandu dari awal sampai selesai!</div>
+                    </div>
+                </div>
+
+                <div class="absolute -top-4 -right-4 sm:-right-6 white-glass p-3 shadow-xl flex items-center gap-2.5 border border-galaxyDark/15 animate-float-delayed">
+                    <div class="w-9 h-9 bg-galaxyDark text-neonCyan flex items-center justify-center text-base flex-shrink-0 border border-neonCyan/30">
+                        <i class="fa-solid fa-gift"></i>
+                    </div>
+                    <div class="text-[11px] font-trajan font-bold text-galaxyDark uppercase">
+                        Free Properti Wisuda <br>
+                        <span class="text-[9px] font-mono text-galaxyMuted font-normal lowercase">buket, confetti & balon</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- University Showcase Bar -->
+    <section class="py-8 bg-surfaceOffWhite border-y border-galaxyDark/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-center font-trajan text-[11px] font-bold uppercase tracking-[0.2em] text-galaxyMuted mb-5">
+                Dipercaya oleh Wisudawan dari Berbagai Universitas Terkemuka
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-galaxyDark font-mono text-xs font-semibold">
+                <div class="flex items-center gap-2 px-3.5 py-1.5 bg-surfaceWhite border border-galaxyDark/10 shadow-sm"><i class="fa-solid fa-building-columns text-neonCyan"></i> Universitas Indonesia (UI)</div>
+                <div class="flex items-center gap-2 px-3.5 py-1.5 bg-surfaceWhite border border-galaxyDark/10 shadow-sm"><i class="fa-solid fa-graduation-cap text-neonCyan"></i> Institut Teknologi Bandung (ITB)</div>
+                <div class="flex items-center gap-2 px-3.5 py-1.5 bg-surfaceWhite border border-galaxyDark/10 shadow-sm"><i class="fa-solid fa-landmark text-neonCyan"></i> Universitas Gadjah Mada (UGM)</div>
+                <div class="flex items-center gap-2 px-3.5 py-1.5 bg-surfaceWhite border border-galaxyDark/10 shadow-sm"><i class="fa-solid fa-school text-neonCyan"></i> Universitas Padjadjaran (Unpad)</div>
+                <div class="flex items-center gap-2 px-3.5 py-1.5 bg-surfaceWhite border border-galaxyDark/10 shadow-sm"><i class="fa-solid fa-book-open text-neonCyan"></i> Telkom University & Binus</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keunggulan Arunika Picture (Why Choose Us) -->
+    <section id="keunggulan" class="py-24 px-6 max-w-7xl mx-auto w-full relative">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                KENAPA MEMILIH ARUNIKA PICTURE?
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                Dedikasi untuk Momen <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Kelulusan Sempurnamu</span>
+            </h2>
+            <p class="text-galaxyMuted text-xs sm:text-sm mt-3 leading-relaxed">
+                Kombinasi keanggunan klasik dan ketajaman optik modern untuk mengabadikan momen berharga sekali seumur hidup.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Feature 1 -->
+            <div class="white-glass-card p-8 rounded-sm shadow-sm hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 group hud-border">
+                <div class="w-14 h-14 bg-galaxyDark text-neonCyan flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-all duration-300 border border-neonCyan/30 shadow-sm">
+                    <i class="fa-solid fa-person-chalkboard"></i>
+                </div>
+                <h3 class="text-lg font-trajan font-bold text-galaxyDark mb-2.5 uppercase tracking-wide">Pengarah Gaya Anti-Kaku</h3>
+                <p class="text-xs text-galaxyMuted leading-relaxed">
+                    Tidak terbiasa di depan lensa kamera? Tim fotografer kami akan mengarahkan pose secara luwes—dari pose formal megah hingga candid ceria penuh tawa.
+                </p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="white-glass-card p-8 rounded-sm shadow-sm hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 group hud-border">
+                <div class="w-14 h-14 bg-galaxyDark text-neonCyan flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-all duration-300 border border-neonCyan/30 shadow-sm">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <h3 class="text-lg font-trajan font-bold text-galaxyDark mb-2.5 uppercase tracking-wide">Signature Tone Arunika</h3>
+                <p class="text-xs text-galaxyMuted leading-relaxed">
+                    Gradasi warna sinematik yang jernih, mempertahankan keaslian warna kulit (skin tone) dan kain toga, dengan pencahayaan hangat khas fajar.
+                </p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="white-glass-card p-8 rounded-sm shadow-sm hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 group hud-border">
+                <div class="w-14 h-14 bg-galaxyDark text-neonCyan flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-all duration-300 border border-neonCyan/30 shadow-sm">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h3 class="text-lg font-trajan font-bold text-galaxyDark mb-2.5 uppercase tracking-wide">Free Properti Lengkap</h3>
+                <p class="text-xs text-galaxyMuted leading-relaxed">
+                    Kami sediakan langsung di lokasi: buket bunga segar/artificial estetik, confetti popper pesta, kacamata trendi, tabung ijazah, dan balon angka.
+                </p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="white-glass-card p-8 rounded-sm shadow-sm hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 group hud-border">
+                <div class="w-14 h-14 bg-galaxyDark text-neonCyan flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-all duration-300 border border-neonCyan/30 shadow-sm">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="text-lg font-trajan font-bold text-galaxyDark mb-2.5 uppercase tracking-wide">Proses Cepat & All Files</h3>
+                <p class="text-xs text-galaxyMuted leading-relaxed">
+                    Semua softfile jepretan asli dapat diakses via Google Drive privat pada H+1. Hasil editing warna beres dalam 3-5 hari kerja.
+                </p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="white-glass-card p-8 rounded-sm shadow-sm hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 group hud-border">
+                <div class="w-14 h-14 bg-galaxyDark text-neonCyan flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-all duration-300 border border-neonCyan/30 shadow-sm">
+                    <i class="fa-solid fa-image"></i>
+                </div>
+                <h3 class="text-lg font-trajan font-bold text-galaxyDark mb-2.5 uppercase tracking-wide">Cetak Lab & Frame Modern</h3>
+                <p class="text-xs text-galaxyMuted leading-relaxed">
+                    Kualitas cetak lab tahan puluhan tahun anti-pudar lengkap dengan bingkai kayu minimalis elegan yang siap mempercantik ruang keluarga.
+                </p>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="white-glass-card p-8 rounded-sm shadow-sm hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 group hud-border">
+                <div class="w-14 h-14 bg-galaxyDark text-neonCyan flex items-center justify-center text-2xl mb-6 group-hover:scale-105 transition-all duration-300 border border-neonCyan/30 shadow-sm">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <h3 class="text-lg font-trajan font-bold text-galaxyDark mb-2.5 uppercase tracking-wide">Spot Lokasi Fleksibel</h3>
+                <p class="text-xs text-galaxyMuted leading-relaxed">
+                    Bebas menentukan lokasi sesi: pelataran gedung ikonik universitas, area taman outdoor, maupun studio partner rekanan Arunika Picture.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Galeri Portofolio Wisuda (Interactive Filter & Lightbox) -->
+    <section id="portofolio" class="py-24 bg-surfaceOffWhite border-t border-b border-galaxyDark/10 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                        ARSIP PORTOFOLIO WISUDA
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                        Galeri Karya <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Arunika</span>
+                    </h2>
+                    <p class="text-galaxyMuted text-xs sm:text-sm mt-2">Klik foto untuk membuka pratinjau resolusi penuh dan detail teknis.</p>
+                </div>
+                
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap gap-2 font-trajan text-xs font-bold tracking-wider" id="gallery-filter">
+                    <button data-filter="all" class="filter-btn px-4 py-2 bg-galaxyDark text-white border border-galaxyDark transition-all">SEMUA FOTO</button>
+                    <button data-filter="solo" class="filter-btn px-4 py-2 bg-surfaceWhite text-galaxyDark border border-galaxyDark/20 hover:border-neonCyan transition-all">SOLO PORTRAIT</button>
+                    <button data-filter="bestie" class="filter-btn px-4 py-2 bg-surfaceWhite text-galaxyDark border border-galaxyDark/20 hover:border-neonCyan transition-all">BESTIE & CIRCLE</button>
+                    <button data-filter="family" class="filter-btn px-4 py-2 bg-surfaceWhite text-galaxyDark border border-galaxyDark/20 hover:border-neonCyan transition-all">KELUARGA</button>
+                    <button data-filter="outdoor" class="filter-btn px-4 py-2 bg-surfaceWhite text-galaxyDark border border-galaxyDark/20 hover:border-neonCyan transition-all">OUTDOOR KAMPUS</button>
+                </div>
+            </div>
+
+            <!-- Gallery Grid Items -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-container">
+                
+                <!-- Item 1: Solo Graduate -->
+                <div class="gallery-card group relative overflow-hidden shadow-md cursor-pointer bg-galaxyDark hud-border" data-category="solo" onclick="openLightboxModal(this)">
+                    <div class="relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=900&q=85" alt="Potret Wisudawati Solo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-galaxyDark/90 via-galaxyDark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="absolute top-4 left-4">
+                            <span class="px-2.5 py-1 bg-galaxyDark text-neonCyan font-mono text-[9px] font-bold tracking-widest border border-neonCyan/40">[ID: SOLO_01]</span>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-neonCyan font-mono text-[10px] tracking-wider block">UNIVERSITAS INDONESIA</span>
+                            <h3 class="text-lg font-trajan font-bold leading-tight uppercase">Senyum Kebanggaan Sarjana Baru</h3>
+                            <p class="text-[11px] text-white/75 mt-1 font-light">Tone natural lembut dengan buket mawar segar.</p>
+                            <div class="mt-3 flex items-center gap-1.5 text-neonCyan font-mono text-[10px] font-bold tracking-widest">
+                                <span>INSPECT_PHOTO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2: Bestie Group -->
+                <div class="gallery-card group relative overflow-hidden shadow-md cursor-pointer bg-galaxyDark hud-border" data-category="bestie" onclick="openLightboxModal(this)">
+                    <div class="relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1627556704302-624286467c65?auto=format&fit=crop&w=900&q=85" alt="Bestie Graduation Circle" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-galaxyDark/90 via-galaxyDark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="absolute top-4 left-4">
+                            <span class="px-2.5 py-1 bg-galaxyDark text-neonCyan font-mono text-[9px] font-bold tracking-widest border border-neonCyan/40">[ID: CIRCLE_02]</span>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-neonCyan font-mono text-[10px] tracking-wider block">INSTITUT TEKNOLOGI BANDUNG</span>
+                            <h3 class="text-lg font-trajan font-bold leading-tight uppercase">Lulus Bareng Sahabat Seperjuangan</h3>
+                            <p class="text-[11px] text-white/75 mt-1 font-light">Pose candid ceria dengan semarak confetti poppers.</p>
+                            <div class="mt-3 flex items-center gap-1.5 text-neonCyan font-mono text-[10px] font-bold tracking-widest">
+                                <span>INSPECT_PHOTO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3: Outdoor Campus Cap Toss -->
+                <div class="gallery-card group relative overflow-hidden shadow-md cursor-pointer bg-galaxyDark hud-border" data-category="outdoor" onclick="openLightboxModal(this)">
+                    <div class="relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1525926477800-7a39b2ae8410?auto=format&fit=crop&w=900&q=85" alt="Lempar Toga Wisuda" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-galaxyDark/90 via-galaxyDark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="absolute top-4 left-4">
+                            <span class="px-2.5 py-1 bg-galaxyDark text-neonCyan font-mono text-[9px] font-bold tracking-widest border border-neonCyan/40">[ID: OUTDOOR_03]</span>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-neonCyan font-mono text-[10px] tracking-wider block">UNIVERSITAS GADJAH MADA</span>
+                            <h3 class="text-lg font-trajan font-bold leading-tight uppercase">Tradisi Lempar Topi Toga ke Langit</h3>
+                            <p class="text-[11px] text-white/75 mt-1 font-light">Momen puncak kemenangan akademik di lapangan kampus.</p>
+                            <div class="mt-3 flex items-center gap-1.5 text-neonCyan font-mono text-[10px] font-bold tracking-widest">
+                                <span>INSPECT_PHOTO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Family Moment -->
+                <div class="gallery-card group relative overflow-hidden shadow-md cursor-pointer bg-galaxyDark hud-border" data-category="family" onclick="openLightboxModal(this)">
+                    <div class="relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1576267423445-b2e0074d68a4?auto=format&fit=crop&w=900&q=85" alt="Foto Wisuda Bersama Keluarga" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-galaxyDark/90 via-galaxyDark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="absolute top-4 left-4">
+                            <span class="px-2.5 py-1 bg-galaxyDark text-neonCyan font-mono text-[9px] font-bold tracking-widest border border-neonCyan/40">[ID: FAMILY_04]</span>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-neonCyan font-mono text-[10px] tracking-wider block">UNIVERSITAS PADJADJARAN</span>
+                            <h3 class="text-lg font-trajan font-bold leading-tight uppercase">Pelukan Hangat Orang Tua Tercinta</h3>
+                            <p class="text-[11px] text-white/75 mt-1 font-light">Rona bangga dan haru ayah dan ibu di hari kelulusan.</p>
+                            <div class="mt-3 flex items-center gap-1.5 text-neonCyan font-mono text-[10px] font-bold tracking-widest">
+                                <span>INSPECT_PHOTO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 5: Solo Female Graduate -->
+                <div class="gallery-card group relative overflow-hidden shadow-md cursor-pointer bg-galaxyDark hud-border" data-category="solo" onclick="openLightboxModal(this)">
+                    <div class="relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1594322436404-5a0526db4d13?auto=format&fit=crop&w=900&q=85" alt="Wisudawati Hijab & Toga" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-galaxyDark/90 via-galaxyDark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="absolute top-4 left-4">
+                            <span class="px-2.5 py-1 bg-galaxyDark text-neonCyan font-mono text-[9px] font-bold tracking-widest border border-neonCyan/40">[ID: SOLO_05]</span>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-neonCyan font-mono text-[10px] tracking-wider block">UNIVERSITAS DIPONEGORO</span>
+                            <h3 class="text-lg font-trajan font-bold leading-tight uppercase">Anggun dalam Kebaya & Toga</h3>
+                            <p class="text-[11px] text-white/75 mt-1 font-light">Potret close-up anggun dengan pencahayaan golden light.</p>
+                            <div class="mt-3 flex items-center gap-1.5 text-neonCyan font-mono text-[10px] font-bold tracking-widest">
+                                <span>INSPECT_PHOTO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6: Male Graduate Outdoor -->
+                <div class="gallery-card group relative overflow-hidden shadow-md cursor-pointer bg-galaxyDark hud-border" data-category="outdoor" onclick="openLightboxModal(this)">
+                    <div class="relative h-96 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532649538693-f3a2ec1bf8bd?auto=format&fit=crop&w=900&q=85" alt="Wisudawan Pria di Halaman Kampus" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-galaxyDark/90 via-galaxyDark/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                        
+                        <div class="absolute top-4 left-4">
+                            <span class="px-2.5 py-1 bg-galaxyDark text-neonCyan font-mono text-[9px] font-bold tracking-widest border border-neonCyan/40">[ID: OUTDOOR_06]</span>
+                        </div>
+                        
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <span class="text-neonCyan font-mono text-[10px] tracking-wider block">TELKOM UNIVERSITY</span>
+                            <h3 class="text-lg font-trajan font-bold leading-tight uppercase">Percaya Diri Menatap Masa Depan</h3>
+                            <p class="text-[11px] text-white/75 mt-1 font-light">Dokumentasi sarjana teknik bersama tabung ijazah resmi.</p>
+                            <div class="mt-3 flex items-center gap-1.5 text-neonCyan font-mono text-[10px] font-bold tracking-widest">
+                                <span>INSPECT_PHOTO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Gallery CTA -->
+            <div class="mt-12 text-center">
+                <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20mau%20lihat%20portofolio%20wisuda%20lebih%20lengkap" target="_blank" class="inline-flex items-center gap-2.5 px-8 py-3.5 bg-galaxyDark text-white font-trajan font-bold text-xs tracking-wider border border-neonCyan/40 hover:bg-neonCyan hover:text-galaxyDark transition-all duration-300 shadow-md">
+                    <i class="fa-brands fa-instagram text-base"></i>
+                    <span>LIHAT RATUSAN FOTO LAINNYA DI @ARUNIKAPICTURE</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Paket & Pricelist Wisuda (IDR Rupiah) -->
+    <section id="paket" class="py-24 px-6 max-w-7xl mx-auto w-full relative">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                PRICELIST & MODUL LAYANAN
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                Pilihan Paket <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Wisuda Arunika</span>
+            </h2>
+            <p class="text-galaxyMuted text-xs sm:text-sm mt-3 leading-relaxed font-sans">
+                Transparan tanpa biaya tersembunyi. Sudah termasuk all softfiles Google Drive, editing color grading sinematik, dan properti pemotretan.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+            
+            <!-- Paket 1: Arunika Solo -->
+            <div class="white-glass-card p-7 border border-galaxyDark/15 flex flex-col justify-between hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 relative group">
+                <div>
+                    <div class="w-10 h-10 bg-galaxyDark text-neonCyan flex items-center justify-center text-base mb-4 border border-neonCyan/30">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <span class="font-mono text-[9px] font-bold tracking-widest uppercase text-galaxyMuted">[SINGLE_GRADUATE]</span>
+                    <h3 class="font-trajan font-bold text-xl text-galaxyDark mt-1 uppercase">Arunika Solo</h3>
+                    <p class="text-xs text-galaxyMuted mt-1">1 Wisudawan + 2 Pendamping</p>
+                    
+                    <div class="my-6 pb-6 border-b border-galaxyDark/10">
+                        <div class="text-xs text-galaxyMuted line-through font-mono">Rp 450.000</div>
+                        <div class="text-3xl font-trajan font-bold text-galaxyDark">
+                            Rp 350.000
+                        </div>
+                        <span class="text-[11px] font-mono text-emerald-600 font-bold">Hemat Rp 100.000 (Promo)</span>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-galaxyDark/85 mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>Durasi:</strong> 60 Menit Sesi Foto</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>15 Foto Edited</strong> High-Res</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>All Softfiles (100+ Foto)</strong> Drive</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span>Free Pinjam Buket & Selempang</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span>1 Area Spot Kampus</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20mau%20booking%20Paket%20Arunika%20Solo%20(Rp%20350.000)" target="_blank" class="w-full py-3.5 border-2 border-galaxyDark text-galaxyDark font-trajan font-bold text-xs text-center hover:bg-galaxyDark hover:text-neonCyan hover:border-neonCyan transition-all tracking-wider uppercase">
+                    PILIH PAKET SOLO
+                </a>
+            </div>
+
+            <!-- Paket 2: Arunika Bestie (TERPOPULER - Galaxy Theme) -->
+            <div class="galaxy-glass text-white p-7 border-2 border-neonCyan flex flex-col justify-between shadow-2xl relative transform lg:-translate-y-4 group">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-neonCyan text-galaxyDark font-mono text-[9px] font-extrabold px-3.5 py-1 uppercase tracking-widest shadow-md flex items-center gap-1.5">
+                    <i class="fa-solid fa-crown text-[10px]"></i>
+                    <span>BEST_VALUE // CIRCLE_CHOICE</span>
+                </div>
+
+                <div>
+                    <div class="w-10 h-10 bg-neonCyan text-galaxyDark flex items-center justify-center text-base mb-4 mt-2 font-bold shadow-cyan-glow">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+                    <span class="font-mono text-[9px] font-bold tracking-widest uppercase text-neonCyan">[GROUP_SYNC_3-5_PAX]</span>
+                    <h3 class="font-trajan font-bold text-xl text-white mt-1 uppercase">Arunika Bestie</h3>
+                    <p class="text-xs text-white/70 mt-1">3 s/d 5 Orang Wisudawan / Sahabat</p>
+                    
+                    <div class="my-6 pb-6 border-b border-white/15">
+                        <div class="text-xs text-white/50 line-through font-mono">Rp 850.000</div>
+                        <div class="text-3xl font-trajan font-bold text-neonCyan cyan-glow-text">
+                            Rp 650.000
+                        </div>
+                        <span class="text-[11px] font-mono text-emerald-400 font-bold">Hanya ~Rp 130rb / Orang!</span>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-white/90 mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>Durasi:</strong> 90 Menit Sesi Foto Seru</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>30 Foto Edited</strong> High-Res</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>All Softfiles (250+ Foto)</strong> Drive</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>Free Cetak 10R + Frame</strong> per Wisudawan</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span>Free 2 Confetti Poppers & Balon</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span>2 Spot Area Kampus Ikonik</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20mau%20booking%20Paket%20Arunika%20Bestie%20Circle%20(Rp%20650.000)" target="_blank" class="w-full py-4 bg-neonCyan text-galaxyDark font-trajan font-bold text-xs text-center shadow-cyan-glow hover:bg-white hover:text-galaxyDark transition-all tracking-widest uppercase">
+                    BOOKING PAKET BESTIE
+                </a>
+            </div>
+
+            <!-- Paket 3: Arunika Family Prestige -->
+            <div class="white-glass-card p-7 border border-galaxyDark/15 flex flex-col justify-between hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 relative group">
+                <div>
+                    <div class="w-10 h-10 bg-galaxyDark text-neonCyan flex items-center justify-center text-base mb-4 border border-neonCyan/30">
+                        <i class="fa-solid fa-people-roof"></i>
+                    </div>
+                    <span class="font-mono text-[9px] font-bold tracking-widest uppercase text-galaxyMuted">[FULL_FAMILY_SYNC]</span>
+                    <h3 class="font-trajan font-bold text-xl text-galaxyDark mt-1 uppercase">Family Prestige</h3>
+                    <p class="text-xs text-galaxyMuted mt-1">Wisudawan + Seluruh Keluarga Besar</p>
+                    
+                    <div class="my-6 pb-6 border-b border-galaxyDark/10">
+                        <div class="text-xs text-galaxyMuted line-through font-mono">Rp 1.450.000</div>
+                        <div class="text-3xl font-trajan font-bold text-galaxyDark">
+                            Rp 1.150.000
+                        </div>
+                        <span class="text-[11px] font-mono text-emerald-600 font-bold">Bonus Video Reels 30 Detik</span>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-galaxyDark/85 mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>Durasi:</strong> 120 Menit (2 Jam Santai)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>50 Foto Edited</strong> High-Res Premium</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>All Softfiles (400+ Foto)</strong> Drive</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>Free Cetak 12R + Frame Eksklusif</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>Free 3 Frame Meja 4R</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span>1 Video Reels Sinematik 30s</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20mau%20booking%20Paket%20Family%20Prestige%20(Rp%201.150.000)" target="_blank" class="w-full py-3.5 border-2 border-galaxyDark text-galaxyDark font-trajan font-bold text-xs text-center hover:bg-galaxyDark hover:text-neonCyan hover:border-neonCyan transition-all tracking-wider uppercase">
+                    PILIH PAKET KELUARGA
+                </a>
+            </div>
+
+            <!-- Paket 4: All-Day Cinematic VIP -->
+            <div class="white-glass-card p-7 border border-galaxyDark/15 flex flex-col justify-between hover:shadow-galaxy-hover hover:border-neonCyan transition-all duration-300 relative group">
+                <div>
+                    <div class="w-10 h-10 bg-galaxyDark text-neonCyan flex items-center justify-center text-base mb-4 border border-neonCyan/30">
+                        <i class="fa-solid fa-film"></i>
+                    </div>
+                    <span class="font-mono text-[9px] font-bold tracking-widest uppercase text-galaxyMuted">[ALL_DAY_VIP_COVERAGE]</span>
+                    <h3 class="font-trajan font-bold text-xl text-galaxyDark mt-1 uppercase">Cinematic VIP</h3>
+                    <p class="text-xs text-galaxyMuted mt-1">Full Coverage Prosesi Wisuda Pagi-Sore</p>
+                    
+                    <div class="my-6 pb-6 border-b border-galaxyDark/10">
+                        <div class="text-xs text-galaxyMuted line-through font-mono">Rp 2.800.000</div>
+                        <div class="text-3xl font-trajan font-bold text-galaxyDark">
+                            Rp 2.250.000
+                        </div>
+                        <span class="text-[11px] font-mono text-emerald-600 font-bold">2 Fotografer + Photobook</span>
+                    </div>
+
+                    <ul class="space-y-3 text-xs text-galaxyDark/85 mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>Full Day Sesi</strong> (Prosesi + Outdoor + Family)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>2 Tim Fotografer Profesional</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>80 Foto Edited</strong> + Unlimited All Softfiles</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>1 Hardcover Photobook 20 Hal</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span><strong>1 Video Reels 60s 4K</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-neonCyan text-sm mt-0.5"></i>
+                            <span>Prioritas Edit Cepat 48 Jam</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20mau%20booking%20Paket%20Cinematic%20VIP%20(Rp%202.250.000)" target="_blank" class="w-full py-3.5 border-2 border-galaxyDark text-galaxyDark font-trajan font-bold text-xs text-center hover:bg-galaxyDark hover:text-neonCyan hover:border-neonCyan transition-all tracking-wider uppercase">
+                    PILIH PAKET VIP
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Price & Add-On Calculator (Clean Whitespace with Galaxy Slate UI) -->
+    <section id="kalkulator" class="py-20 bg-surfaceOffWhite border-t border-b border-galaxyDark/10">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="white-glass bg-surfaceWhite p-8 md:p-12 shadow-xl border border-galaxyDark/15 hud-border">
+                
+                <div class="text-center max-w-xl mx-auto mb-10">
+                    <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-2 inline-block border border-neonCyan/30">
+                        KALKULATOR INTERAKTIF
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-trajan font-bold text-galaxyDark uppercase">Estimasi Biaya & Custom Add-On</h3>
+                    <p class="text-xs text-galaxyMuted mt-2 font-sans">Sesuaikan paket dasar dan tambahkan fasilitas custom sesuai kebutuhanmu.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Calculator Form Left -->
+                    <div class="lg:col-span-7 space-y-6">
+                        
+                        <!-- Base Package Selector -->
+                        <div>
+                            <label class="block font-trajan text-xs font-bold text-galaxyDark mb-2 uppercase tracking-wider">1. Pilih Paket Dasar Wisuda:</label>
+                            <select id="calc-package" onchange="calculateTotal()" class="w-full bg-surfaceOffWhite border border-galaxyDark/20 rounded-sm px-4 py-3 text-xs sm:text-sm font-sans font-semibold text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors cursor-pointer">
+                                <option value="350000" data-name="Arunika Solo">Paket Arunika Solo — Rp 350.000 (1 Wisudawan)</option>
+                                <option value="650000" data-name="Arunika Bestie" selected>Paket Arunika Bestie — Rp 650.000 (3-5 Orang)</option>
+                                <option value="1150000" data-name="Family Prestige">Paket Family Prestige — Rp 1.150.000 (Keluarga Besar)</option>
+                                <option value="2250000" data-name="Cinematic VIP">Paket Cinematic VIP — Rp 2.250.000 (Full Day)</option>
+                            </select>
+                        </div>
+
+                        <!-- Add-On Options Checkboxes -->
+                        <div class="space-y-3">
+                            <label class="block font-trajan text-xs font-bold text-galaxyDark uppercase tracking-wider">2. Tambahan Opsi (Add-Ons):</label>
+                            
+                            <label class="flex items-center justify-between p-3.5 bg-surfaceOffWhite border border-galaxyDark/10 hover:border-neonCyan cursor-pointer transition-all">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addon-video" value="250000" onchange="calculateTotal()" class="w-4 h-4 text-neonCyan bg-surfaceWhite border-galaxyDark/30 rounded focus:ring-neonCyan cursor-pointer">
+                                    <span class="text-xs font-semibold text-galaxyDark">Video Cinematic Reels / TikTok (30-60s)</span>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-electricBlue">+ Rp 250.000</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-3.5 bg-surfaceOffWhite border border-galaxyDark/10 hover:border-neonCyan cursor-pointer transition-all">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addon-photobook" value="300000" onchange="calculateTotal()" class="w-4 h-4 text-neonCyan bg-surfaceWhite border-galaxyDark/30 rounded focus:ring-neonCyan cursor-pointer">
+                                    <span class="text-xs font-semibold text-galaxyDark">Hardcover Photobook Album (20 Halaman)</span>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-electricBlue">+ Rp 300.000</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-3.5 bg-surfaceOffWhite border border-galaxyDark/10 hover:border-neonCyan cursor-pointer transition-all">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addon-extra-frame" value="85000" onchange="calculateTotal()" class="w-4 h-4 text-neonCyan bg-surfaceWhite border-galaxyDark/30 rounded focus:ring-neonCyan cursor-pointer">
+                                    <span class="text-xs font-semibold text-galaxyDark">Ekstra Cetak 12R + Bingkai Kayu Minimalis</span>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-electricBlue">+ Rp 85.000</span>
+                            </label>
+
+                            <label class="flex items-center justify-between p-3.5 bg-surfaceOffWhite border border-galaxyDark/10 hover:border-neonCyan cursor-pointer transition-all">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="addon-extra-hour" value="150000" onchange="calculateTotal()" class="w-4 h-4 text-neonCyan bg-surfaceWhite border-galaxyDark/30 rounded focus:ring-neonCyan cursor-pointer">
+                                    <span class="text-xs font-semibold text-galaxyDark">Ekstra Waktu Sesi Foto (+60 Menit)</span>
+                                </div>
+                                <span class="text-xs font-mono font-bold text-electricBlue">+ Rp 150.000</span>
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Calculator Summary Card Right (Galaxy Glass) -->
+                    <div class="lg:col-span-5 bg-galaxyDark text-white p-6 sm:p-8 border border-neonCyan/40 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <span class="font-mono text-[9px] font-bold uppercase tracking-widest text-neonCyan">[ESTIMASI_TRANSAKSI]</span>
+                            <h4 class="font-trajan font-bold text-xl text-white mt-1 uppercase" id="calc-summary-name">Paket Arunika Bestie</h4>
+                            
+                            <div class="mt-6 space-y-2.5 text-xs font-mono border-t border-white/10 pt-4 text-white/80">
+                                <div class="flex justify-between">
+                                    <span>Harga Paket Dasar:</span>
+                                    <span class="font-semibold text-white" id="calc-base-price">Rp 650.000</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Total Add-On:</span>
+                                    <span class="font-semibold text-neonCyan" id="calc-addon-price">Rp 0</span>
+                                </div>
+                                <div class="flex justify-between text-emerald-400">
+                                    <span>All Softfiles Drive:</span>
+                                    <span>GRATIS</span>
+                                </div>
+                                <div class="flex justify-between text-emerald-400">
+                                    <span>Free Properti Wisuda:</span>
+                                    <span>GRATIS</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 pt-4 border-t border-white/20">
+                            <div class="font-mono text-[10px] text-white/60 uppercase tracking-widest">Total Estimasi Investasi:</div>
+                            <div class="text-3xl sm:text-4xl font-trajan font-bold text-neonCyan cyan-glow-text my-1" id="calc-grand-total">
+                                Rp 650.000
+                            </div>
+                            <p class="font-mono text-[9px] text-white/50 mb-4">*DP hanya 30% untuk mengunci slot jadwal fotografer.</p>
+
+                            <button onclick="bookWithCalculator()" class="w-full py-3.5 bg-neonCyan text-galaxyDark font-trajan font-bold text-xs tracking-widest uppercase hover:bg-white transition-all flex items-center justify-center gap-2 shadow-cyan-glow">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                                <span>BOOKING VIA WHATSAPP</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Koleksi Properti Gratis yang Disediakan -->
+    <section class="py-20 max-w-7xl mx-auto px-6 w-full">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                PROPERTI PEMOTRETAN
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                Fasilitas Properti <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Siap Pakai</span>
+            </h2>
+            <p class="text-galaxyMuted text-xs sm:text-sm mt-2 font-sans">Semua properti di bawah ini kami sediakan gratis di lokasi untuk menunjang fotomu agar semakin hidup & seru!</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+            
+            <div class="p-5 bg-surfaceWhite border border-galaxyDark/15 shadow-sm hover:border-neonCyan transition-all group">
+                <div class="text-3xl text-galaxyDark group-hover:text-neonCyan transition-colors mb-3"><i class="fa-solid fa-fan"></i></div>
+                <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Buket Bunga</h4>
+                <p class="text-[10px] text-galaxyMuted mt-1">Fresh & artificial estetik</p>
+            </div>
+
+            <div class="p-5 bg-surfaceWhite border border-galaxyDark/15 shadow-sm hover:border-neonCyan transition-all group">
+                <div class="text-3xl text-galaxyDark group-hover:text-neonCyan transition-colors mb-3"><i class="fa-solid fa-champagne-glasses"></i></div>
+                <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Confetti Popper</h4>
+                <p class="text-[10px] text-galaxyMuted mt-1">Kertas emas tabur pesta</p>
+            </div>
+
+            <div class="p-5 bg-surfaceWhite border border-galaxyDark/15 shadow-sm hover:border-neonCyan transition-all group">
+                <div class="text-3xl text-galaxyDark group-hover:text-neonCyan transition-colors mb-3"><i class="fa-solid fa-glasses"></i></div>
+                <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Kacamata Gaya</h4>
+                <p class="text-[10px] text-galaxyMuted mt-1">Retro stylish & trendy</p>
+            </div>
+
+            <div class="p-5 bg-surfaceWhite border border-galaxyDark/15 shadow-sm hover:border-neonCyan transition-all group">
+                <div class="text-3xl text-galaxyDark group-hover:text-neonCyan transition-colors mb-3"><i class="fa-solid fa-award"></i></div>
+                <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Selempang Toga</h4>
+                <p class="text-[10px] text-galaxyMuted mt-1">Selempang dummy wisuda</p>
+            </div>
+
+            <div class="p-5 bg-surfaceWhite border border-galaxyDark/15 shadow-sm hover:border-neonCyan transition-all group">
+                <div class="text-3xl text-galaxyDark group-hover:text-neonCyan transition-colors mb-3"><i class="fa-solid fa-scroll"></i></div>
+                <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Tabung Ijazah</h4>
+                <p class="text-[10px] text-galaxyMuted mt-1">Silinder beludru mewah</p>
+            </div>
+
+            <div class="p-5 bg-surfaceWhite border border-galaxyDark/15 shadow-sm hover:border-neonCyan transition-all group">
+                <div class="text-3xl text-galaxyDark group-hover:text-neonCyan transition-colors mb-3"><i class="fa-solid fa-camera-retro"></i></div>
+                <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Balon Angka</h4>
+                <p class="text-[10px] text-galaxyMuted mt-1">Balon angka tahun kelulusan</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Alur Pemesanan (How it Works) -->
+    <section class="py-20 bg-surfaceOffWhite border-t border-b border-galaxyDark/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-16">
+                <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                    PROTOKOL RESERVASI
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                    4 Langkah Sederhana <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Booking Arunika</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                
+                <!-- Step 1 -->
+                <div class="relative text-center md:text-left space-y-3 white-glass p-6 border border-galaxyDark/10 shadow-sm">
+                    <div class="w-12 h-12 bg-galaxyDark text-neonCyan font-trajan font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-sm border border-neonCyan/40">
+                        01
+                    </div>
+                    <h3 class="text-base font-trajan font-bold text-galaxyDark uppercase">Pilih Paket & Tanggal</h3>
+                    <p class="text-xs text-galaxyMuted leading-relaxed">Tentukan paket pilihan dan infokan tanggal serta lokasi kampus wisuda kamu.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative text-center md:text-left space-y-3 white-glass p-6 border border-galaxyDark/10 shadow-sm">
+                    <div class="w-12 h-12 bg-galaxyDark text-neonCyan font-trajan font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-sm border border-neonCyan/40">
+                        02
+                    </div>
+                    <h3 class="text-base font-trajan font-bold text-galaxyDark uppercase">Kunci Slot dengan DP</h3>
+                    <p class="text-xs text-galaxyMuted leading-relaxed">Amankan slot tanggal fotografer dengan pembayaran DP ringan 30%.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative text-center md:text-left space-y-3 white-glass p-6 border border-galaxyDark/10 shadow-sm">
+                    <div class="w-12 h-12 bg-galaxyDark text-neonCyan font-trajan font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-sm border border-neonCyan/40">
+                        03
+                    </div>
+                    <h3 class="text-base font-trajan font-bold text-galaxyDark uppercase">Sesi Photoshoot Seru</h3>
+                    <p class="text-xs text-galaxyMuted leading-relaxed">Tim fotografer hadir tepat waktu di lokasi dan memandu pose dengan santai.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative text-center md:text-left space-y-3 white-glass p-6 border border-galaxyDark/10 shadow-sm">
+                    <div class="w-12 h-12 bg-galaxyDark text-neonCyan font-trajan font-bold text-xl flex items-center justify-center mx-auto md:mx-0 shadow-sm border border-neonCyan/40">
+                        04
+                    </div>
+                    <h3 class="text-base font-trajan font-bold text-galaxyDark uppercase">Terima File & Cetakan</h3>
+                    <p class="text-xs text-galaxyMuted leading-relaxed">Akses all softfile Google Drive H+1 dan hasil edit premium dalam 3-5 hari kerja.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Wisudawan -->
+    <section id="testimoni" class="py-24 px-6 max-w-7xl mx-auto w-full">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                CLIENT_EXPERIENCE
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                Suara Para <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Wisudawan</span>
+            </h2>
+            <p class="text-galaxyMuted text-xs sm:text-sm mt-2 font-sans">Kepuasan dan senyum bahagiamu adalah kebanggaan terbesar tim Arunika Picture.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Review 1 -->
+            <div class="white-glass-card p-8 border border-galaxyDark/15 shadow-sm flex flex-col justify-between hud-border">
+                <div>
+                    <div class="flex items-center gap-1 text-amber-500 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-galaxyDark/85 italic leading-relaxed font-sans">
+                        "Awalnya aku sama keluarga kaku banget kalau difoto. Tapi fotografer dari Arunika ramah banget, ngarahin posenya asik dan santai. Pas lihat hasil fotonya beneran takjub, tone warnanya jernih dan berkelas!"
+                    </p>
+                </div>
+                <div class="mt-6 pt-6 border-t border-galaxyDark/10 flex items-center gap-3.5">
+                    <div class="w-11 h-11 bg-galaxyDark text-neonCyan font-trajan font-bold flex items-center justify-center text-base border border-neonCyan/30">
+                        A
+                    </div>
+                    <div>
+                        <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Annisa Syahrani, S.E.</h4>
+                        <span class="font-mono text-[10px] text-galaxyMuted">Universitas Indonesia</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="white-glass-card p-8 border border-galaxyDark/15 shadow-sm flex flex-col justify-between hud-border">
+                <div>
+                    <div class="flex items-center gap-1 text-amber-500 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-galaxyDark/85 italic leading-relaxed font-sans">
+                        "Paket Bestie-nya sangat worth it! Kami berempat foto bareng pake confetti dan buket bunga yang udah disediain Arunika. Hasil softfile-nya cepet banget masuk Drive dan cetakan framenya rapi. Sukses terus Arunika Picture!"
+                    </p>
+                </div>
+                <div class="mt-6 pt-6 border-t border-galaxyDark/10 flex items-center gap-3.5">
+                    <div class="w-11 h-11 bg-galaxyDark text-neonCyan font-trajan font-bold flex items-center justify-center text-base border border-neonCyan/30">
+                        R
+                    </div>
+                    <div>
+                        <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Rizky Fauzan & Circle</h4>
+                        <span class="font-mono text-[10px] text-galaxyMuted">Institut Teknologi Bandung</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="white-glass-card p-8 border border-galaxyDark/15 shadow-sm flex flex-col justify-between hud-border">
+                <div>
+                    <div class="flex items-center gap-1 text-amber-500 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs sm:text-sm text-galaxyDark/85 italic leading-relaxed font-sans">
+                        "Mama saya sampai terharu waktu lihat hasil foto keluarga wisuda dari Arunika. Hasil cetak 12R + frame kayunya langsung kami pajang di rumah. Komunikasinya sangat responsif dan fotografer on-time!"
+                    </p>
+                </div>
+                <div class="mt-6 pt-6 border-t border-galaxyDark/10 flex items-center gap-3.5">
+                    <div class="w-11 h-11 bg-galaxyDark text-neonCyan font-trajan font-bold flex items-center justify-center text-base border border-neonCyan/30">
+                        D
+                    </div>
+                    <div>
+                        <h4 class="font-trajan text-xs font-bold text-galaxyDark uppercase">Dewi Anggraeni, S.Ked.</h4>
+                        <span class="font-mono text-[10px] text-galaxyMuted">Universitas Gadjah Mada</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-surfaceOffWhite border-t border-b border-galaxyDark/10">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center max-w-xl mx-auto mb-14">
+                <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                    FREQUENTLY_ASKED_QUESTIONS
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                    Tanya Jawab <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Seputar Wisuda</span>
+                </h2>
+            </div>
+
+            <!-- Accordion Items -->
+            <div class="space-y-4" id="faq-accordion">
+                
+                <!-- FAQ 1 -->
+                <div class="border border-galaxyDark/15 bg-surfaceWhite transition-all">
+                    <button class="w-full p-5 text-left font-trajan font-bold text-galaxyDark text-xs sm:text-sm flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>Apakah saya akan diarahkan posenya jika belum pernah photoshoot?</span>
+                        <i class="fa-solid fa-chevron-down text-neonCyan transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs text-galaxyMuted leading-relaxed font-sans hidden">
+                        Tentu saja! Fotografer kami sangat berpengalaman dalam membimbing pose dari pose formal bersama orang tua/pendamping, potret anggun mandiri, hingga pose ekspresif dan candid seru bersama sahabat. Kamu cukup hadir dan nikmati momennya.
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="border border-galaxyDark/15 bg-surfaceWhite transition-all">
+                    <button class="w-full p-5 text-left font-trajan font-bold text-galaxyDark text-xs sm:text-sm flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>Berapa lama proses editing dan penyerahan semua file foto?</span>
+                        <i class="fa-solid fa-chevron-down text-neonCyan transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs text-galaxyMuted leading-relaxed font-sans hidden">
+                        Seluruh file original (ratusan foto tanpa filter kompresi) akan diberikan akses Google Drive pada H+1 setelah sesi. Untuk proses pemilihan foto yang diedit dan color-graded membutuhkan waktu 3 s/d 5 hari kerja.
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="border border-galaxyDark/15 bg-surfaceWhite transition-all">
+                    <button class="w-full p-5 text-left font-trajan font-bold text-galaxyDark text-xs sm:text-sm flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>Bagaimana jika saat hari-H kondisi cuaca hujan di lokasi outdoor?</span>
+                        <i class="fa-solid fa-chevron-down text-neonCyan transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs text-galaxyMuted leading-relaxed font-sans hidden">
+                        Kami selalu memiliki rencana alternatif! Jika hujan ringan/sedang, kita dapat memanfaatkan selasar gedung kampus dengan pilar megah, lobi berarsitektur indah, payung transparan estetik dari kami, atau opsi reschedule jam pemotretan pada hari yang sama.
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="border border-galaxyDark/15 bg-surfaceWhite transition-all">
+                    <button class="w-full p-5 text-left font-trajan font-bold text-galaxyDark text-xs sm:text-sm flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                        <span>Apakah Arunika Picture melayani pemotretan di luar kota?</span>
+                        <i class="fa-solid fa-chevron-down text-neonCyan transition-transform duration-300"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs text-galaxyMuted leading-relaxed font-sans hidden">
+                        Ya, tim kami melayani wilayah Jabodetabek, Bandung, Yogyakarta, Surabaya, dan kota-kota lainnya dengan penyesuaian biaya akomodasi/transport yang ramah di kantong mahasiswa.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulir Reservasi & Direct WhatsApp Booking Generator -->
+    <section id="booking" class="py-24 px-6 max-w-4xl mx-auto w-full relative">
+        <div class="text-center max-w-xl mx-auto mb-12">
+            <span class="font-mono text-[10px] text-neonCyan bg-galaxyDark px-3 py-1 tracking-widest uppercase mb-3 inline-block border border-neonCyan/30">
+                TRANSMIT_BOOKING_DATA
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-trajan font-bold text-galaxyDark uppercase tracking-wide">
+                Reservasi Jadwal <span class="text-transparent bg-clip-text bg-gradient-to-r from-galaxyDark via-electricBlue to-neonCyan">Wisudamu</span>
+            </h2>
+            <p class="text-galaxyMuted text-xs sm:text-sm mt-2 font-sans">Slot fotografer kami terbatas per harinya. Isi data di bawah ini untuk terhubung langsung dengan tim kami via WhatsApp.</p>
+        </div>
+
+        <div class="white-glass bg-surfaceWhite p-8 md:p-12 shadow-2xl border border-galaxyDark/20 relative hud-border">
+            
+            <form id="booking-form" onsubmit="handleDirectBooking(event)" class="space-y-6">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-trajan text-xs font-bold text-galaxyDark mb-1.5 uppercase tracking-wider">Nama Lengkap Wisudawan *</label>
+                        <input type="text" id="cust-name" required placeholder="Contoh: Sarah Faradila, S.Farm." class="w-full bg-surfaceOffWhite border border-galaxyDark/20 px-4 py-3 text-xs sm:text-sm text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors">
+                    </div>
+                    <div>
+                        <label class="block font-trajan text-xs font-bold text-galaxyDark mb-1.5 uppercase tracking-wider">Nomor WhatsApp Aktif *</label>
+                        <input type="tel" id="cust-phone" required placeholder="Contoh: 08123456789" class="w-full bg-surfaceOffWhite border border-galaxyDark/20 px-4 py-3 text-xs sm:text-sm text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-trajan text-xs font-bold text-galaxyDark mb-1.5 uppercase tracking-wider">Universitas / Kampus *</label>
+                        <input type="text" id="cust-campus" required placeholder="Contoh: Universitas Indonesia (Depok)" class="w-full bg-surfaceOffWhite border border-galaxyDark/20 px-4 py-3 text-xs sm:text-sm text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors">
+                    </div>
+                    <div>
+                        <label class="block font-trajan text-xs font-bold text-galaxyDark mb-1.5 uppercase tracking-wider">Tanggal & Perkiraan Jam Sesi *</label>
+                        <input type="date" id="cust-date" required class="w-full bg-surfaceOffWhite border border-galaxyDark/20 px-4 py-3 text-xs sm:text-sm text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block font-trajan text-xs font-bold text-galaxyDark mb-1.5 uppercase tracking-wider">Pilihan Paket Wisuda *</label>
+                        <select id="cust-package" required class="w-full bg-surfaceOffWhite border border-galaxyDark/20 px-4 py-3 text-xs sm:text-sm text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors cursor-pointer">
+                            <option value="Paket Arunika Solo (Rp 350.000)">Paket Arunika Solo (Rp 350.000)</option>
+                            <option value="Paket Arunika Bestie (Rp 650.000)" selected>Paket Arunika Bestie (Rp 650.000) [Terpopuler]</option>
+                            <option value="Paket Family Prestige (Rp 1.150.000)">Paket Family Prestige (Rp 1.150.000)</option>
+                            <option value="Paket Cinematic VIP (Rp 2.250.000)">Paket Cinematic VIP (Rp 2.250.000)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block font-trajan text-xs font-bold text-galaxyDark mb-1.5 uppercase tracking-wider">Lokasi Photoshoot Diinginkan</label>
+                        <select id="cust-location" class="w-full bg-surfaceOffWhite border border-galaxyDark/20 px-4 py-3 text-xs sm:text-sm text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors cursor-pointer">
+                            <option value="Halaman / Spot Ikonik Kampus">Halaman / Spot Ikonik Kampus</option>
+                            <option value="Indoor Studio Partner Rekanan">Indoor Studio Partner Rekanan</option>
+                            <option value="Taman / Outdoor Sekitar Kampus">Taman / Outdoor Sekitar Kampus</option>
+                            <option value="Kombinasi Kampus & Studio">Kombinasi Kampus & Studio</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-trajan text-xs font-bold text-galaxyDark mb-1.5 uppercase tracking-wider">Catatan Tambahan / Request Khusus (Opsional)</label>
+                    <textarea id="cust-notes" rows="3" placeholder="Contoh: Ingin foto bareng keluarga 5 orang dan teman sekelas, request video reels pendek untuk IG/TikTok." class="w-full bg-surfaceOffWhite border border-galaxyDark/20 px-4 py-3 text-xs sm:text-sm text-galaxyDark focus:outline-none focus:border-neonCyan transition-colors resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-galaxyDark text-surfaceWhite font-trajan font-bold text-xs tracking-widest uppercase border border-neonCyan hover:bg-neonCyan hover:text-galaxyDark transition-all duration-300 shadow-cyan-glow flex items-center justify-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-lg text-emerald-400"></i>
+                    <span>KIRIM RESERVASI KE WHATSAPP ARUNIKA</span>
+                </button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Modal (Glassmorphism Overlay: rgba(255, 255, 255, 0.65) with Galaxy Border) -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-white/60 backdrop-blur-xl hidden flex items-center justify-center p-4 md:p-8 transition-opacity duration-300">
+        <!-- Close Button -->
+        <button onclick="closeLightboxModal()" class="absolute top-6 right-6 w-12 h-12 flex items-center justify-center bg-galaxyDark text-neonCyan border border-neonCyan/40 hover:bg-neonCyan hover:text-galaxyDark transition-all z-10 shadow-lg" aria-label="Tutup">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        
+        <div class="max-w-5xl w-full max-h-[90vh] flex flex-col md:flex-row bg-surfaceWhite text-galaxyDark shadow-glass-modal border border-galaxyDark/20 hud-border overflow-hidden">
+            <!-- Image Area -->
+            <div class="md:w-3/5 bg-galaxyDark flex items-center justify-center p-4 relative">
+                <img id="modal-img" src="" alt="Detail Foto Wisuda" class="max-h-[75vh] w-auto object-contain">
+                <div class="absolute top-4 left-4 font-mono text-[9px] text-neonCyan bg-galaxyDark/90 px-2 py-1 border border-neonCyan/30">
+                    [VIEWFINDER_8K]
+                </div>
+            </div>
+            
+            <!-- Information Details -->
+            <div class="md:w-2/5 p-8 flex flex-col justify-between bg-surfaceWhite">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between border-b border-galaxyDark/10 pb-3">
+                        <span class="font-mono text-[9px] text-neonCyan bg-galaxyDark px-2.5 py-1 tracking-widest uppercase font-bold" id="modal-category">PORTFOLIO</span>
+                        <span class="font-mono text-[10px] text-galaxyMuted" id="modal-campus">Universitas Indonesia</span>
+                    </div>
+                    
+                    <h3 id="modal-title" class="text-2xl font-trajan font-bold text-galaxyDark uppercase tracking-wide leading-tight">Judul Foto Wisuda</h3>
+                    <p id="modal-desc" class="text-xs text-galaxyMuted leading-relaxed font-sans">Deskripsi detail momen wisuda yang penuh makna dan cerita.</p>
+                    
+                    <div class="p-4 bg-surfaceOffWhite border border-galaxyDark/10 space-y-2 text-xs font-mono text-galaxyDark">
+                        <div class="flex justify-between items-center"><span class="text-galaxyMuted">COLOR_GRADE:</span> <span class="font-bold text-electricBlue">Arunika Signature Glow</span></div>
+                        <div class="flex justify-between items-center"><span class="text-galaxyMuted">RESOLUTION:</span> <span class="font-bold">Full High-Res CMOS</span></div>
+                        <div class="flex justify-between items-center"><span class="text-galaxyMuted">ALL_FILES:</span> <span class="font-bold text-emerald-600">Google Drive Lifetime</span></div>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-galaxyDark/10 space-y-3">
+                    <a id="modal-wa-btn" href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20tertarik%20dengan%20gaya%20foto%20ini" target="_blank" class="w-full py-3.5 bg-galaxyDark text-surfaceWhite font-trajan font-bold text-xs flex items-center justify-center gap-2 border border-neonCyan hover:bg-neonCyan hover:text-galaxyDark transition-all tracking-wider uppercase">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>KONSULTASI FOTO INI DI WA</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Action Button -->
+    <aside aria-label="Floating Action" class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+        <a href="https://wa.me/6281234567890?text=Halo%20Arunika%20Picture,%20saya%20ingin%20tanya%20info%20foto%20wisuda" target="_blank" class="flex items-center gap-2.5 px-4 py-3 bg-galaxyDark text-neonCyan font-mono font-bold text-xs border border-neonCyan shadow-cyan-glow hover:bg-neonCyan hover:text-galaxyDark transition-all" title="Chat WhatsApp Arunika Picture">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span class="hidden sm:inline font-trajan tracking-wider">CHAT WHATSAPP</span>
+        </a>
+    </aside>
+
+    <!-- Footer (Galaxy Midnight Blue with Neon Cyan Border Accent) -->
+    <footer class="bg-galaxyDark text-surfaceWhite pt-16 pb-12 border-t-4 border-neonCyan">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+                
+                <!-- Brand Info -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 px-3 py-1 bg-surfaceWhite rounded-sm flex items-center justify-center">
+                            <img src="IMG_2074.PNG" alt="Arunika Picture" class="h-6 object-contain filter invert">
+                        </div>
+                        <span class="font-trajan font-bold text-xl text-white tracking-[0.18em]">ARUNIKA PICTURE</span>
+                    </div>
+                    <p class="text-xs text-white/70 max-w-md leading-relaxed font-sans">
+                        Jasa dokumentasi fotografi & videografi wisuda profesional, sinematik, dan estetik. Mengabadikan pencapaian bersejarahmu dengan presisi dan kehangatan abadi.
+                    </p>
+                    <div class="flex items-center gap-4 text-white/80 pt-2 font-mono">
+                        <a href="https://instagram.com" target="_blank" class="w-9 h-9 bg-white/10 flex items-center justify-center hover:bg-neonCyan hover:text-galaxyDark transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://tiktok.com" target="_blank" class="w-9 h-9 bg-white/10 flex items-center justify-center hover:bg-neonCyan hover:text-galaxyDark transition-all"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="w-9 h-9 bg-white/10 flex items-center justify-center hover:bg-neonCyan hover:text-galaxyDark transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="mailto:info@arunikapicture.com" class="w-9 h-9 bg-white/10 flex items-center justify-center hover:bg-neonCyan hover:text-galaxyDark transition-all"><i class="fa-regular fa-envelope"></i></a>
+                    </div>
+                </div>
+
+                <!-- Navigation Quick Links -->
+                <div class="space-y-3">
+                    <h4 class="font-trajan font-bold text-xs uppercase tracking-widest text-neonCyan">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-xs text-white/70 font-mono">
+                        <li><a href="#hero" class="hover:text-neonCyan transition-colors">01. Beranda</a></li>
+                        <li><a href="#keunggulan" class="hover:text-neonCyan transition-colors">02. Keunggulan</a></li>
+                        <li><a href="#portofolio" class="hover:text-neonCyan transition-colors">03. Portofolio</a></li>
+                        <li><a href="#paket" class="hover:text-neonCyan transition-colors">04. Paket & Harga</a></li>
+                        <li><a href="#kalkulator" class="hover:text-neonCyan transition-colors">05. Kalkulator Add-On</a></li>
+                        <li><a href="#testimoni" class="hover:text-neonCyan transition-colors">06. Testimoni</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Operational -->
+                <div class="space-y-3">
+                    <h4 class="font-trajan font-bold text-xs uppercase tracking-widest text-neonCyan">Layanan & Kontak</h4>
+                    <div class="space-y-2 text-xs text-white/70 font-sans">
+                        <p><i class="fa-solid fa-location-dot text-neonCyan mr-1.5"></i> Seluruh Universitas di Indonesia</p>
+                        <p><i class="fa-brands fa-whatsapp text-neonCyan mr-1.5"></i> +62 812-3456-7890</p>
+                        <p><i class="fa-regular fa-envelope text-neonCyan mr-1.5"></i> halo@arunikapicture.com</p>
+                        <p><i class="fa-regular fa-clock text-neonCyan mr-1.5"></i> Layanan: 08.00 - 21.00 WIB</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50 font-mono">
+                <div>
+                    © 2026 <strong>ARUNIKA PICTURE</strong>. All Rights Reserved. Fotografi Wisuda Indonesia.
+                </div>
+                <div class="text-[11px] text-neonCyan">
+                    SYS_STATUS: ACTIVE // PRECISION_OPTICS
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Gallery Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryCards = document.querySelectorAll('.gallery-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-galaxyDark', 'text-white', 'border-galaxyDark');
+                    b.classList.add('bg-surfaceWhite', 'text-galaxyDark', 'border-galaxyDark/20');
+                });
+                
+                // Add active to clicked button
+                btn.classList.remove('bg-surfaceWhite', 'text-galaxyDark', 'border-galaxyDark/20');
+                btn.classList.add('bg-galaxyDark', 'text-white', 'border-galaxyDark');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox Modal Functions
+        function openLightboxModal(card) {
+            const img = card.querySelector('img').src;
+            const title = card.querySelector('h3').textContent;
+            const category = card.querySelector('span[class*="text-neonCyan"]').textContent;
+            const campus = card.querySelector('span[class*="text-neonCyan"]:not([class*="bg-galaxyDark"])') ? card.querySelector('span[class*="text-neonCyan"]:not([class*="bg-galaxyDark"])').textContent : "Universitas Indonesia";
+            const desc = card.querySelector('p').textContent;
+
+            document.getElementById('modal-img').src = img;
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-category').textContent = category;
+            document.getElementById('modal-campus').textContent = campus;
+            document.getElementById('modal-desc').textContent = desc;
+            
+            const waText = encodeURIComponent(`Halo Arunika Picture, saya tertarik dengan konsep foto wisuda: "${title}" (${campus})`);
+            document.getElementById('modal-wa-btn').href = `https://wa.me/6281234567890?text=${waText}`;
+
+            document.getElementById('lightbox-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightboxModal() {
+            document.getElementById('lightbox-modal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on ESC key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightboxModal();
+            }
+        });
+
+        // Interactive Price & Add-On Calculator Logic
+        function calculateTotal() {
+            const packageSelect = document.getElementById('calc-package');
+            const basePrice = parseInt(packageSelect.value);
+            const selectedOption = packageSelect.options[packageSelect.selectedIndex];
+            const packageName = selectedOption.getAttribute('data-name');
+
+            let addonTotal = 0;
+            if (document.getElementById('addon-video').checked) addonTotal += parseInt(document.getElementById('addon-video').value);
+            if (document.getElementById('addon-photobook').checked) addonTotal += parseInt(document.getElementById('addon-photobook').value);
+            if (document.getElementById('addon-extra-frame').checked) addonTotal += parseInt(document.getElementById('addon-extra-frame').value);
+            if (document.getElementById('addon-extra-hour').checked) addonTotal += parseInt(document.getElementById('addon-extra-hour').value);
+
+            const grandTotal = basePrice + addonTotal;
+
+            // Format IDR Currency
+            const formatRupiah = (num) => 'Rp ' + num.toLocaleString('id-ID');
+
+            document.getElementById('calc-summary-name').textContent = 'Paket ' + packageName;
+            document.getElementById('calc-base-price').textContent = formatRupiah(basePrice);
+            document.getElementById('calc-addon-price').textContent = formatRupiah(addonTotal);
+            document.getElementById('calc-grand-total').textContent = formatRupiah(grandTotal);
+        }
+
+        function bookWithCalculator() {
+            const packageSelect = document.getElementById('calc-package');
+            const selectedOption = packageSelect.options[packageSelect.selectedIndex];
+            const packageName = selectedOption.getAttribute('data-name');
+            const grandTotal = document.getElementById('calc-grand-total').textContent;
+
+            let addonsList = [];
+            if (document.getElementById('addon-video').checked) addonsList.push('Video Cinematic Reels');
+            if (document.getElementById('addon-photobook').checked) addonsList.push('Hardcover Photobook Album');
+            if (document.getElementById('addon-extra-frame').checked) addonsList.push('Ekstra Frame 12R');
+            if (document.getElementById('addon-extra-hour').checked) addonsList.push('Ekstra Waktu 1 Jam');
+
+            const addonStr = addonsList.length > 0 ? addonsList.join(', ') : 'Tidak ada';
+
+            const message = `Halo Arunika Picture! Saya ingin reservasi paket wisuda berikut:
+- Paket: Paket ${packageName}
+- Add-On Tambahan: ${addonStr}
+- Estimasi Total: ${grandTotal}
+
+Mohon info ketersediaan slot tanggal wisuda ya. Terima kasih!`;
+
+            window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Direct Booking Form to WhatsApp
+        function handleDirectBooking(e) {
+            e.preventDefault();
+            const name = document.getElementById('cust-name').value;
+            const phone = document.getElementById('cust-phone').value;
+            const campus = document.getElementById('cust-campus').value;
+            const date = document.getElementById('cust-date').value;
+            const pkg = document.getElementById('cust-package').value;
+            const loc = document.getElementById('cust-location').value;
+            const notes = document.getElementById('cust-notes').value || '-';
+
+            const message = `Halo Arunika Picture! Saya ingin reservasi sesi foto wisuda:
+🎓 *Nama Wisudawan:* ${name}
+📱 *No WhatsApp:* ${phone}
+🏛️ *Kampus / Univ:* ${campus}
+📅 *Tanggal Wisuda:* ${date}
+📦 *Pilihan Paket:* ${pkg}
+📍 *Pilihan Lokasi:* ${loc}
+📝 *Catatan / Request:* ${notes}
+
+Mohon konfirmasi ketersediaan jadwal dan tata cara DP-nya. Terima kasih!`;
+
+            window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // FAQ Toggle Accordion
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
+</body>
+</html>
